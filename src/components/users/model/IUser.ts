@@ -4,7 +4,7 @@ export default interface IUser extends Document {
       mobile : string;
       email : string;
       image : string;
-      wallet:string;
+      wallet: string;
       total_orders : number;
       addresses : [object];
       token : string;

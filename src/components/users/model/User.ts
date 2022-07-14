@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose'
 import IUser from './IUser'
-import UserAddress from './UserAddress'
+import UserAddressSchema from './UserAddressSchema'
 import UserStatus from './UserStatus'
 
 const UserSchema : Schema = new Schema({
@@ -10,7 +10,7 @@ const UserSchema : Schema = new Schema({
   image: { type: String, default: null },
   wallet: { type: Number, default: 0 },
   total_orders: { Number: String, default: 0 },
-  addresses: { type: [UserAddress]},
+  addresses: { type: [UserAddressSchema] },
   token: { type: String, default: null },
   status: { type: Number, default: UserStatus.ACTIVE },
   createdAt: { type: Date, default: Date.now }
