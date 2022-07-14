@@ -3,7 +3,7 @@ import RouterEngine from './router'
 
 // routers
 import usersRouter from './../components/users/usersRouter'
-import productsRouter from '../components/product/productsRouter'
+import productsRouter from '../components/products/productsRouter'
 
 class RouteService {
   private app : Application
