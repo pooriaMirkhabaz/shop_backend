@@ -1,0 +1,273 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "TechBlog API Docs",
+        "contact": {
+            "name": "pooria mirkhabaz",
+            "email": "p.mirkhabaz@gmail.com",
+            "github": "https://github.com/pooriaMirkhabaz/techblog"
+        },
+        "license": {
+            "name": "MIT"
+        }
+    },
+    "host": ["localhost:5000"],
+    "basePath": "/api/v1",
+    "apis": ["../../components/**/*Routers.ts"],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/articles": {
+            "get": {
+                "description": "Articles List",
+                "operationId": "findArticles",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "page",
+                        "in": "query",
+                        "description": "page ID",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "per_Page",
+                        "in": "query",
+                        "description": "page ID",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "select fields in articles : title,slug,image",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Articles List",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/articles"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Creates a new article",
+                "operationId": "addArticle",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "article",
+                    "in": "body",
+                    "description": "article to add to the store",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/NewArticle"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "article response",
+                        "schema": {
+                            "$ref": "#/definitions/articles"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/articles/{id}": {
+            "get": {
+                "description": "Returns a data for article",
+                "operationId": "findArticleById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of article to fetch",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "select fields in fetch",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "article response",
+                        "schema": {
+                            "$ref": "#/definitions/articles"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "deletes a single article based on the ID supplied",
+                "operationId": "deleteArticle",
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of article to delete",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "204": {
+                        "description": "article deleted"
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "articles": {
+            "type": "object",
+            "allOf": [{
+                    "$ref": "#/definitions/NewArticle"
+                },
+                {
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "slug": {
+                            "type": "string"
+                        },
+                        "image": {
+                            "type": "string"
+                        },
+                        "content": {
+                            "type": "string"
+                        },
+                        "catId": {
+                            "type": "string"
+                        },
+                        "tags": {
+                            "type": "array"
+                        },
+                        "authorId": {
+                            "type": "string"
+                        },
+                        "status": {
+                            "type": "number"
+                        },
+                        "view": {
+                            "type": "number"
+                        },
+                        "createdAt": {
+                            "type": "date"
+                        }
+                    }
+                }
+            ]
+        },
+        "NewArticle": {
+            "type": "object",
+            "required": [
+                "name",
+                "title",
+                "slug",
+                "image",
+                "content",
+                "catId",
+                "authorId"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "catId": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array"
+                },
+                "authorId": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "number"
+                },
+                "view": {
+                    "type": "number"
+                },
+                "createdAt": {
+                    "type": "date"
+                }
+            }
+        },
+        "ErrorModel": {
+            "type": "object",
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

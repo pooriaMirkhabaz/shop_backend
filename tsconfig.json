@@ -1,0 +1,21 @@
+{
+  "files": ["./src/**/*.ts"],
+  "include": ["./build"],
+  "exclude": [".env", "node_modules", ".gitignore", "./src/public/"],
+  "compilerOptions": {
+    "strict": true,
+    "rootDir": "src",
+    "outDir": "build",
+    "target": "ES2018",
+    "module": "CommonJS",
+    "allowJs": true,
+    "checkJs": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "baseUrl": "./",
+    "removeComments": true,
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"]
+  }
+}
