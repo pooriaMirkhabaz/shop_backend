@@ -1,10 +1,10 @@
-import {Router} from 'express'
-import controller from './productsController';
+import { Router } from 'express'
+import controller from './productsController'
 
 const productsRouter = Router()
 
 // controllers
-const productsController = new controller();
+const productsController = new controller()
 
 // routes
 productsRouter.get('/', productsController.items)
