@@ -1,5 +1,5 @@
-import IUser from './../../../../components/users/model/IUser'
-import ICoupon from './../../../../components/coupon/model/ICoupon'
+import ICoupon from './../../../components/coupon/model/ICoupon'
+import IUser from './../../../components/users/model/IUser'
 import UserCouponHandler from './UserCouponHandler'
 import LimitCouponHandler from './LimitCouponHandler'
 import ExpiresCouponHandler from './ExpiresCouponHandler'
