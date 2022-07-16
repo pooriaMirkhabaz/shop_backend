@@ -7,7 +7,7 @@ import UserAddressSchema from '../../users/model/UserAddressSchema'
 const OrderSchema : Schema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'user' },
   total_price: { type: Number, required: true },
-  coupon: { type: Object, default: null },
+  coupon: { type: Schema.Types.ObjectId, ref: 'coupon', default: null },
   final_price: { type: Number, required: true },
   order_lines: { type: [OrderLineSchema] },
   delivery_address: { type: [UserAddressSchema], required: true },

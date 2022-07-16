@@ -5,7 +5,7 @@ import IOrderLine from './IOrderLine'
 export default interface IOrder extends Document {
       user : object;
       total_price : number;
-      coupon : object;
+      coupon : string;
       final_price : number;
       order_lines : IOrderLine;
       delivery_address : object;
