@@ -4,6 +4,7 @@ import RouterEngine from './router'
 // routers
 import usersRouter from './../components/users/usersRouter'
 import productsRouter from '../components/products/productsRouter'
+import categoryRouter from './../components/categories/categoriesRouter'
 
 class RouteService {
   private app : Application
@@ -18,6 +19,7 @@ class RouteService {
   private bindRouters () {
     this.router.registerRouters('/api/v1/users', usersRouter)
     this.router.registerRouters('/api/v1/products', productsRouter)
+    this.router.registerRouters('/api/v1/category', categoryRouter)
   }
 
   public startRouter () {
